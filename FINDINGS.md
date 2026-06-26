@@ -62,6 +62,42 @@ turning its head cannot clear rebreathed CO2).
 
 ---
 
+## 4. Is prone the "principal component"? Causally yes, by variance no (Phase 4)
+
+The word means two different things, and the answer differs:
+
+**Outcome-variance decomposition (Shapley / LMG share of death R^2, H3 calibrated):**
+
+| factor | pre, observable | pre, incl. vulnerability | post, observable |
+|--------|----------------:|-------------------------:|-----------------:|
+| latent vulnerability | -- | **49.8%** | -- |
+| heavy smoking | 44.8% | 22.5% | 39.3% |
+| smoking (any) | 19.0% | 9.5% | 15.3% |
+| **prone** | **14.9%** | **7.5%** | **21.7%** |
+| SES | 11.4% | 5.7% | 13.2% |
+| soft bedding | 9.9% | 5.0% | 10.6% |
+
+By share of variance prone is a **mid-pack** contributor. The single largest axis
+is the **latent vulnerability (~42-50%)**; among measured factors, **smoking
+dominates**. So prone is a real, removable *cause* (sections 1-3) yet NOT the
+biggest slice of variance. Those are different questions: variance share also
+depends on prevalence and on how much the other factors vary. Prone was the
+headline public-health win because it is the biggest *modifiable causal lever* --
+you cannot change a baby's brainstem, but you can change its position -- not
+because it explains the most variance.
+
+**PCA on the risk-factor matrix -- the correlation-vs-causation story as a picture:**
+
+* PRE-campaign, prone loads on its OWN axis (PC3 = -0.88), nearly orthogonal to
+  the social-adversity bundle (PC1: smoking/SES/bedding). When ~everyone sleeps
+  prone, prone is statistically independent of adversity -- so the prone<->death
+  link of that era *cannot* be confounding. It has to be causal.
+* POST-campaign, prone migrates ONTO the adversity axis (PC1 loading -0.13 ->
+  -0.43), because the healthy-adherer gate ties remaining prone use to low SES /
+  smoking. This is exactly why the post-era OR is partly inflated by selection
+  rather than extra causal potency -- and why naive pre/post OR comparisons are
+  treacherous.
+
 ## Honest limitations
 
 - Everything rests on the calibrated data-generating process. The result is
@@ -74,6 +110,12 @@ turning its head cannot clear rebreathed CO2).
   odds-ratio / E-value logic, but it is an open calibration gap (Phase 4+).
 - The triple-risk world slightly under-reproduces the OR *rise* and over-
   concentrates deaths in the vulnerable; minor tuning outstanding.
+- The Phase-4 variance decomposition does NOT reproduce the real-world rise in
+  smoking's attributable share (50% -> 80%): in our model prone's variance share
+  rises post-era and smoking's falls, the opposite of history. This traces to the
+  same incomplete era-model gap (we change only prone + bedding across the era)
+  plus the healthy-adherer gate making post-era prone a stronger risk marker.
+  Note PAF and LMG R^2-share are different metrics; neither is yet matched.
 
 ## Bottom line for the original question
 
