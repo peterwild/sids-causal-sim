@@ -1,0 +1,71 @@
+{
+  "_comment": "Real published numbers the synthetic DGP must reproduce. See DESIGN.md section 5. Each target carries a tolerance used by the Phase 2 calibration gate. Sources are the published studies in DESIGN.md section 11.",
+  "targets": [
+    {
+      "id": "prone_prevalence_cases",
+      "description": "Fraction of SIDS cases found prone, pre vs post Back-to-Sleep",
+      "pre": 0.84,
+      "post": 0.485,
+      "tol": 0.05,
+      "source": "PMC3356149"
+    },
+    {
+      "id": "prone_prevalence_controls",
+      "description": "Fraction of control infants usually prone, pre vs post",
+      "pre": 0.50,
+      "post": 0.246,
+      "tol": 0.07,
+      "source": "King County 1996; pre approximate"
+    },
+    {
+      "id": "sids_rate_per_1000",
+      "description": "US SIDS deaths per 1000 live births, pre vs post",
+      "pre": 1.2,
+      "post": 0.4,
+      "tol": 0.1,
+      "source": "CDC / Back-to-Sleep reviews"
+    },
+    {
+      "id": "prone_adjusted_or",
+      "description": "Adjusted odds ratio for prone, and the RISE across the campaign (falsification gate)",
+      "pre": 2.86,
+      "post": 3.93,
+      "tol": 0.5,
+      "is_falsification_gate": true,
+      "source": "Gilbert 2005 (2.95->6.91); pooled RR review"
+    },
+    {
+      "id": "smoking_or",
+      "description": "Maternal smoking OR (~2), dose-response to ~12.7 at >20/day",
+      "base": 2.0,
+      "heavy_smoker": 12.7,
+      "tol": 0.5,
+      "source": "PMC545061"
+    },
+    {
+      "id": "smoking_attributable_risk",
+      "description": "Population attributable fraction of smoking, rising as prone removed (falsification gate)",
+      "pre": 0.50,
+      "post": 0.80,
+      "tol": 0.07,
+      "is_falsification_gate": true,
+      "source": "PMC545061"
+    },
+    {
+      "id": "vulnerability_phenotype",
+      "description": "Low brainstem 5-HT binding: controls vs cases",
+      "controls": 0.37,
+      "cases": 0.83,
+      "tol": 0.06,
+      "source": "Kinney serotonin hypothesis (PMC6934437)"
+    },
+    {
+      "id": "unaccustomed_prone_or",
+      "description": "OR for usually-supine babies placed/found prone once (external check)",
+      "value": 19.0,
+      "tol": 4.0,
+      "is_external_check": true,
+      "source": "secondary-prone literature"
+    }
+  ]
+}
