@@ -69,6 +69,11 @@ class Params:
     # (advice followed by the advantaged) -> strong negative SES slope.
     prone_post_intercept: float = -1.55  # sigmoid(-1.55) ~= 0.17 at SES=0
     prone_post_ses_slope: float = -1.20
+    # Phase 3: HIDDEN confounding channel. Log-odds bump to prone choice for
+    # vulnerable infants (e.g. fragile/preterm babies placed prone more often).
+    # This is UNMEASURED -- the adjusted OR cannot subtract it -- so it is the
+    # marker world's last refuge for faking a prone effect with no real effect.
+    gamma_vuln_prone: float = 0.0
 
     # --- death hazard ---
     # baseline log-odds of death with no stressors; very negative (rare outcome).
@@ -193,12 +198,14 @@ def simulate_covariates(cfg: SimConfig) -> pd.DataFrame:
     )
     bedding = (rng.random(n) < p_bed).astype(int)
 
-    # prone | era, SES  (healthy-adherer gate is the era-dependent slope)
+    # prone | era, SES, (hidden) vulnerability
+    # gamma_vuln_prone is the unmeasured V->prone channel (Phase 3).
     if post:
-        p_prone = _sigmoid(p.prone_post_intercept + p.prone_post_ses_slope * ses)
+        eta_prone = p.prone_post_intercept + p.prone_post_ses_slope * ses
     else:
-        p_prone = _sigmoid(p.prone_pre_intercept + p.prone_pre_ses_slope * ses)
-    prone = (rng.random(n) < p_prone).astype(int)
+        eta_prone = p.prone_pre_intercept + p.prone_pre_ses_slope * ses
+    eta_prone = eta_prone + p.gamma_vuln_prone * vuln
+    prone = (rng.random(n) < _sigmoid(eta_prone)).astype(int)
 
     return pd.DataFrame(
         {
