@@ -77,6 +77,7 @@ class Params:
     w_smoke: float = 0.9
     w_heavy_extra: float = 1.3          # additional for heavy smokers
     w_bedding: float = 0.8
+    w_ses: float = 0.0                  # direct low-SES->hazard path (>=0; main engine of H2)
     w_prone: float = 1.7                # prone's DIRECT contribution (worlds re-scale this)
     # vulnerability main effect (used by H1/H2 as an additive bump)
     w_vuln: float = 1.2
@@ -95,17 +96,21 @@ class SimConfig:
     params: Params = field(default_factory=Params)
 
 
-def _death_logodds(world: World, p: Params, *, vuln, smoke, heavy, bedding, prone):
+def _death_logodds(world: World, p: Params, *, vuln, smoke, heavy, bedding, prone, ses):
     """Return per-infant log-odds of death under the chosen world.
 
     The stressor predictor is identical across worlds; what changes is how prone
     and vulnerability combine into the final hazard.
     """
-    # shared stressor terms (everything EXCEPT prone's direct effect)
+    # shared stressor terms (everything EXCEPT prone's direct effect).
+    # w_ses is the direct low-SES->hazard path: lower (more negative) ses raises
+    # the hazard. This is the marker world's strongest fair engine -- poverty
+    # killing through many routes, with prone as its correlate.
     base_stressors = (
         p.w_smoke * smoke
         + p.w_heavy_extra * heavy
         + p.w_bedding * bedding
+        - p.w_ses * ses
     )
 
     if world is World.CAUSAL:
@@ -144,8 +149,26 @@ def _death_logodds(world: World, p: Params, *, vuln, smoke, heavy, bedding, pron
     return eta
 
 
-def simulate_cohort(cfg: SimConfig) -> pd.DataFrame:
-    """Generate one synthetic birth cohort as a DataFrame (one row per infant)."""
+def pdeath(world: World, params: Params, *, vulnerable, smoke, heavy_smoke,
+           soft_bedding, prone, ses):
+    """Public hazard: probability of death given covariate arrays.
+
+    Used for counterfactual / attributable-fraction calculations (e.g. set
+    smoke=0 to ask 'how many deaths would remain with no smoking?').
+    """
+    eta = _death_logodds(
+        world, params, vuln=vulnerable, smoke=smoke, heavy=heavy_smoke,
+        bedding=soft_bedding, prone=prone, ses=ses,
+    )
+    return _sigmoid(eta)
+
+
+def simulate_covariates(cfg: SimConfig) -> pd.DataFrame:
+    """Generate the covariate block (everything EXCEPT death) for one cohort.
+
+    Split out from death generation so the calibrator can solve the hazard
+    intercept against fixed covariates (see calibrate.py) without resampling.
+    """
     rng = np.random.default_rng(cfg.seed)
     p = cfg.params
     n = cfg.n
@@ -177,13 +200,6 @@ def simulate_cohort(cfg: SimConfig) -> pd.DataFrame:
         p_prone = _sigmoid(p.prone_pre_intercept + p.prone_pre_ses_slope * ses)
     prone = (rng.random(n) < p_prone).astype(int)
 
-    # death hazard (world-specific)
-    eta = _death_logodds(
-        cfg.world, p, vuln=vuln, smoke=smoke, heavy=heavy, bedding=bedding, prone=prone
-    )
-    p_death = _sigmoid(eta)
-    death = (rng.random(n) < p_death).astype(int)
-
     return pd.DataFrame(
         {
             "ses": ses,
@@ -192,9 +208,29 @@ def simulate_cohort(cfg: SimConfig) -> pd.DataFrame:
             "heavy_smoke": heavy,
             "soft_bedding": bedding,
             "prone": prone,
-            "p_death": p_death,
-            "death": death,
             "era": cfg.era.value,
             "world": cfg.world.value,
         }
     )
+
+
+def attach_hazard(df: pd.DataFrame, world: World, params: Params,
+                  rng: np.random.Generator) -> pd.DataFrame:
+    """Add p_death and a Bernoulli death draw to a covariate frame (in place)."""
+    p_death = pdeath(
+        world, params,
+        vulnerable=df.vulnerable.to_numpy(), smoke=df.smoke.to_numpy(),
+        heavy_smoke=df.heavy_smoke.to_numpy(), soft_bedding=df.soft_bedding.to_numpy(),
+        prone=df.prone.to_numpy(), ses=df.ses.to_numpy(),
+    )
+    df = df.copy()
+    df["p_death"] = p_death
+    df["death"] = (rng.random(len(df)) < p_death).astype(int)
+    return df
+
+
+def simulate_cohort(cfg: SimConfig) -> pd.DataFrame:
+    """Generate one synthetic birth cohort as a DataFrame (one row per infant)."""
+    cov = simulate_covariates(cfg)
+    rng = np.random.default_rng(cfg.seed + 1)  # distinct stream for death draw
+    return attach_hazard(cov, cfg.world, cfg.params, rng)
