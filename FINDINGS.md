@@ -98,6 +98,50 @@ because it explains the most variance.
   rather than extra causal potency -- and why naive pre/post OR comparisons are
   treacherous.
 
+## 5. How much of prone's risk can you engineer away at home? (Phase 4.5)
+
+Phases 1-4 establish *that* prone is causal. Phase 4.5 (DESIGN.md sections 11,17,18)
+asks the decision-relevant question: decompose the calibrated prone effect into
+mechanism channels (rebreathing, thermal, obstruction, free-standing arousal,
+endogenous autonomic), then toggle a fully engineered home environment (breathable
+surface + cool room) and read off the **residual excess absolute risk** for a
+**low-risk infant** (non-smoking household, firm/bare crib, advantaged), marginal
+over the unknown vulnerability phenotype.
+
+The decomposition is pinned so that in a historical crib it reproduces the
+calibrated prone effect exactly (OR ~3.1), and the habituation amplifier is solved
+to reproduce the unaccustomed-prone spike (OR ~19) -- which only the *gated*
+(challenge x response-failure) structure can produce, not a free-standing arousal
+term.
+
+**Excess absolute risk, prone vs supine, low-risk infant (per 1000 births):**
+
+| form (anchor) | historical crib | engineered (breathable+cool) | removable |
+|---------------|----------------:|-----------------------------:|----------:|
+| **G gated** (Horne: lambda~0) | 0.191 | **0.041** | **78%** |
+| H endo (prone raises autonomic events) | 0.191 | 0.069 | 64% |
+| A additive (adversarial; lambda large) | 0.191 | 0.093 | 51% |
+
+**Form E-value (robustness):** to push the engineered-prone excess above
+**0.5/1000** is *unreachable* even if the entire prone effect were free-standing
+arousal hazard; to exceed even **0.1/1000** would require **~33%** of the prone
+effect to be free-standing arousal -- but the no-baseline-derangement data (Horne
+2001) anchors that term near 0%. So the engineered residual sits robustly in the
+**~0.04-0.09 / 1000** band (roughly 1 in 11,000-25,000).
+
+**What survives all engineering:** positional airway obstruction (prone-intrinsic)
+plus endogenous autonomic events in vulnerable infants -- and `V` cannot be
+identified in advance. So the residual is small but non-zero against an absorbing
+outcome. The contribution of this phase is to convert the scary multiplicative
+OR (~3-5) into a *conditional absolute* number a parent can actually reason about,
+and to bound how much of it is removable (most) vs irreducible (little, but real).
+
+**Caveats specific to Phase 4.5:** the engineered-prone cell is *unobserved* in the
+real data, so these are model extrapolations whose credibility is the functional
+form -- which is exactly why the result is reported as a form-band plus E-value, not
+a point estimate. The mechanism shares within each form are still illustrative
+(anchored to the spike + the no-derangement datum, not yet individually fit).
+
 ## Honest limitations
 
 - Everything rests on the calibrated data-generating process. The result is
