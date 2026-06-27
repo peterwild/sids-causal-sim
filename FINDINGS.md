@@ -399,6 +399,40 @@ weaning, it does not really achieve that — **"soother always" is simpler**, an
 weaning step is small and device-managed. Either way the non-negotiable holds:
 **never prone unsupervised or at night.**
 
+## 11. Engineered prone vs the co-sleeping parents actually do (synthesis)
+
+The most decision-relevant real-world comparison is not "engineered prone vs ideal
+back-sleep" — it is **engineered prone vs the sleep arrangement an exhausted parent
+actually falls into** when told "never bed-share." That fallback is rarely the safe,
+deliberate version; it is the unplanned 3am collapse, often on a sofa or armchair.
+Putting the options on one risk axis (relative to back-sleep in a safe crib;
+literature ORs from Carpenter 2013 / Blair 2014, our absolute figures from Phase
+4.5/8):
+
+| Arrangement | Relative risk | Note |
+|---|---|---|
+| Back-sleep, safe crib (+ soother) | **1.0** (reference) | baseline |
+| **Supervised** engineered prone | ~1.0–1.4× | near-baseline; awake adult = rescuer (§10) |
+| Safe-7 bed-share (breastfed, non-smoking, sober, firm prepared bed, no soft bedding) | ~1–2× | not significant absent hazards (Blair) |
+| **Unsupervised** engineered prone, low-risk infant | ~1.4× | the small obstruction+autonomic residual (Phase 4.5) |
+| Hazardous bed-share (smoking / alcohol / drugs / soft bedding) | ~5–10×+ | rises steeply with each hazard |
+| **Sofa / armchair co-sleeping** | **~18–50×** | the catastrophe; Carpenter sofa OR 18.3 |
+
+**The takeaway that deserves to be public:** an exhausted parent who flips the baby
+prone in a good crib is on the order of **10–35× safer** than the same parent who
+collapses on the couch with the baby — and abstinence messaging ("never bed-share,
+always back") pushes desperate parents toward exactly that couch, because it offers
+**no sanctioned safe middle.** Both engineered prone and deliberate Safe-7 bed-
+sharing are far safer than the improvised worst option.
+
+**Practical guidance (harm-reduction):** the enemy is the unplanned sofa/armchair
+collapse. Defend against it two ways — (1) a soother to cut the exhaustion that
+drives the collapse in the first place (Phase 7/8), and (2) *sanctioned* safe
+fallbacks (Safe-Sleep-7 bed-sharing; supervised engineered-prone naps) so a
+desperate parent at 3am reaches for a 1–2× option instead of improvising a 20×+ one.
+Telling people only what *not* to do, with no safe alternative, is the worst
+public-health design for a sleep-deprived population.
+
 ## Bottom line (all phases)
 
 1. Prone IS an independent cause (Phases 1-5): the marker-only world is falsified;

@@ -9,3 +9,5 @@ __pycache__/
 outputs/
 figures/
 *.parquet
+# local-only draft essay (published separately on a website; not part of the repo)
+essay-draft.md
