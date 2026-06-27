@@ -356,20 +356,48 @@ sleep — where ~all SIDS occurs and where you can't stay awake-attentive — st
 supine. Notably this is roughly the line pediatric guidance already draws between
 supervised tummy-time and unobserved sleep.
 
-**Regime corollary (day supervised-prone + night soother).** The soother's *modeled*
-benefit (Phase 7/8) — better sleep → less parental exhaustion → less bed-sharing
-displacement — is concentrated at **night** (the long unsupervised block where
-exhaustion bites). So a "supervised-prone day naps + soother at night" split is safe
-(prone confined to the supervised window) and puts the soother where its benefit
-actually is. **On weaning (outside the model, thin evidence):** the main theoretical
-soother downside is a motion/white-noise sleep-onset association; it is *time-limited*
-(SNOO-class devices are used ~0–6mo and have a built-in weaning mode — a one-time
-transition, not years of dependence). The day/night split only modestly reduces the
-soother "dose" because **night dominates the conditioning**, so it is not a strong
-weaning fix. Net: "soother always" is simpler and its weaning step is small and
-manageable; the hybrid is a *reasonable* choice if prone day-naps are independently
-wanted (reflux comfort, the baby sleeps better, the parent is there anyway), but it
-is not *necessary* to avoid a weaning problem.
+### 10a. Soother downsides and the day/night regime question (outside the model)
+
+This sub-section is practical reasoning beyond the simulation (the model does not
+simulate weaning); the evidence base here is thin and partly anecdotal — flagged as
+such.
+
+**Downsides of using a soother (SNOO-class) for every sleep.** No evidence-based
+*harm* is established, but the real considerations are:
+- **Sleep-onset association** (the main one) — the baby can learn to need the motion +
+  white noise to fall asleep, getting less practice at independent self-settling
+  ("drowsy but awake"). Evidence thin, anecdotes both ways.
+- **Weaning** — real but **time-limited and built-in**: these devices are used
+  ~0–6 months and ramp the motion down in a weaning mode. It is *one* transition at
+  ~6mo, not years of dependence.
+- **White noise** — keep volume moderate and the unit away from the crib; otherwise
+  minor.
+- **Cost** (~$1,700) and slightly reduced night-time parental intervention (auto-
+  soothes; does not override genuine hunger).
+
+Net: the soother downside is essentially a single, time-boxed weaning step with weak
+evidence behind the dependence worry — low-stakes, not a long-term commitment.
+
+**Does a "supervised-prone day naps + soother at night" hybrid reduce that?** Two
+things to separate:
+- **Safety: sound.** It confines prone strictly to the *supervised* window (§10,
+  NICU-equivalent) and keeps the *unsupervised* night on supine + soother — exactly
+  where both the real SIDS risk and the soother's modeled benefit live. A good
+  partition.
+- **Weaning: weak benefit.** The soother's value (better sleep → less exhaustion →
+  less bed-sharing displacement) is concentrated at **night**, and **night is also
+  where most of the sleep-association conditioning happens** (long consolidated
+  blocks; naps are short). So dropping the soother for day naps barely reduces the
+  conditioning "dose" — you're still using it for the part that matters most, while
+  taking on a small supervised-prone risk + the burden of continuous attentive nap
+  supervision.
+
+**Decision guidance:** if there is an *independent* reason to want prone day-naps
+(reflux comfort, the baby genuinely sleeps better prone, the parent is present
+anyway), the hybrid is a reasonable and safe choice. If the *only* goal is to dodge
+weaning, it does not really achieve that — **"soother always" is simpler**, and its
+weaning step is small and device-managed. Either way the non-negotiable holds:
+**never prone unsupervised or at night.**
 
 ## Bottom line (all phases)
 
