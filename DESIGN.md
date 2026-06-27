@@ -646,7 +646,7 @@ evaluated on the **low-risk manifold** and **decomposed into**:
 Output: *"for a low-risk infant in a fully engineered environment, the irreducible
 excess absolute risk of prone over the 0–6mo window is on the order of 1 in N,
 versus 1 in M for supine; the difference is X, of which Y% is removable and Z% is
-irreducible."* A number Pete can actually run ruin-asymmetry on — instead of a
+irreducible."* A number a parent can actually run ruin-asymmetry on — instead of a
 scary, population-averaged, multiplicative OR.
 
 **17.5 The crux open question (where novelty and skepticism are both legitimate):
@@ -709,7 +709,7 @@ Form H (gated + prone-endo):    h = κ · g(V,W) · [C_exo + C_endo(prone)] · (
 ```
 
 - Under **G**: at `C_exo = 0` and `C_endo = 0`, hazard = 0 — *arousal deficit is
-  harmless without a challenge*. This is Pete's hypothesis in equation form.
+  harmless without a challenge*. This is the engineered-prone hypothesis in equation form.
 - Under **A**: the `λ · pronePenalty` term contributes hazard even at `C_total = 0`.
   This is the "prone is intrinsically dangerous" claim. `λ` is the thing to bound.
 - Under **H**: prone has no free-standing hazard but *raises the endogenous
@@ -729,7 +729,7 @@ the real world cannot produce):
 
 **Decisive cells:**
 - `[prone, arousal-penalty ON, C_exo OFF, C_endo OFF]` → if `h ≈ 0`, arousal deficit
-  is harmless absent a challenge → **Form G**, Pete's case holds; prone risk is
+  is harmless absent a challenge → **Form G**, the engineered-prone case holds; prone risk is
   fully engineerable.
 - `[prone, arousal-penalty ON, C_exo OFF, C_endo ON]` → the **irreducible residual**:
   the part that survives a perfect environment. Its size = the real decision number.
@@ -750,7 +750,7 @@ as these).**
    prone impairs arousability *"with no clinically significant changes in
    cardiorespiratory variables or body temperature."* An arousal deficit that does
    not, by itself, derange physiology is direct evidence the free-standing additive
-   term `λ` is near zero. **This is the strongest honest point for Pete's hypothesis.**
+   term `λ` is near zero. **This is the strongest honest point for the engineered-prone hypothesis.**
 3. **Counter-anchor bounds `C_endo(prone)` (keeps a residual under H).** Prone shifts
    HRV, blood-pressure control, and cerebral oxygenation at baseline in several
    studies — so position may raise the *endogenous* event rate even with `C_exo=0`.

@@ -77,7 +77,7 @@ supine families) -- and compares to the TRUE do-effect.
 | + control-selection bias only | 3.53 | 7.40 |
 | + both biases (what a study sees) | 4.30 | 8.73 |
 
-Two honest takeaways, both vindicating Pete's skepticism *in degree, not in kind*:
+Two honest takeaways, both vindicating the study-skeptic's view *in degree, not in kind*:
 
 1. **The reported OR is materially inflated by design** -- 1.4x (pre) to 2.9x (post)
    above the true do-effect once recall + selection bias are layered on. The famous
@@ -413,7 +413,7 @@ weaning step is small and device-managed. Either way the non-negotiable holds:
 4. The dominant home protocol (Phase 8) is **back-sleep + an enforced-supine soother**,
    under **harm-reduction framing** -- it captures supine's in-crib safety AND defuses
    the displacement loop, beating every alternative including engineered prone. The
-   data-supported version of Pete's thesis is not "prone is fine if engineered"; it is
+   data-supported version of the engineered-prone thesis is not "prone is fine if engineered"; it is
    "supine + soother through the high-risk window, framed as harm-reduction."
 
 ## Honest limitations

@@ -1,7 +1,7 @@
 """Phase 4.5 -- the linchpin challenge-toggle experiment (DESIGN.md sections 11, 17, 18).
 
-The earlier phases established THAT prone is causal. This phase asks the question
-Pete actually cares about: *through what* does it act, and how much of it can you
+The earlier phases established THAT prone is causal. This phase asks the
+decision-relevant question: *through what* does it act, and how much of it can you
 engineer away at home?
 
 We take the single calibrated prone term `w_prone` (the whole direct effect, on the
@@ -83,7 +83,7 @@ class Apportionment:
 # Three competing functional forms, each resting on a stated calibration anchor.
 # Shares are of the total calibrated prone effect. See DESIGN.md section 18.5.
 FORM_SHARES = {
-    # Pete's hypothesis: prone acts almost entirely through engineerable challenges;
+    # The engineered-prone hypothesis: prone acts almost entirely through engineerable channels;
     # the free-standing arousal term is ~0 (Horne: no baseline derangement).
     "G_gated": {"rebr": 0.55, "therm": 0.12, "obstr": 0.18, "arousal": 0.00, "endo": 0.15},
     # "prone is intrinsically dangerous": a large free-standing arousal hazard that

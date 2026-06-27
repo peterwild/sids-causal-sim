@@ -1,7 +1,7 @@
 """Phase 3.5 -- biased case-control replication (DESIGN.md section 6, step 2).
 
 The historical prone OR came from retrospective case-control studies, which carry
-two classic biases Pete is right to be skeptical of:
+two classic biases worth being skeptical of:
 
   * RECALL bias -- parents of a dead infant are interviewed intensely and
     scrutinize the sleep position; some truly-supine cases get reported prone

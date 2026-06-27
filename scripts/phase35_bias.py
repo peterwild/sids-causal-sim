@@ -38,8 +38,8 @@ def main():
     print("READING IT: the clean design recovers ~the true do-effect; recall +")
     print("selection bias INFLATE the reported OR above the truth. So the famous")
     print("historical ORs are partly artifact -- but the effect does NOT vanish")
-    print("when bias is removed (the do-effect stays well above 1). Pete's")
-    print("skepticism about the studies is justified in DEGREE, not in kind: the")
+    print("when bias is removed (the do-effect stays well above 1). Skepticism")
+    print("about the studies is justified in DEGREE, not in kind: the")
     print("number is inflated, the cause is still real.")
 
 
