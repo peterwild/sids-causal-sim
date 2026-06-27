@@ -62,6 +62,33 @@ turning its head cannot clear rebreathed CO2).
 
 ---
 
+## 3.5 How much of the historical OR is a study artifact? (Phase 3.5)
+
+`scripts/phase35_bias.py` plants the calibrated causal effect, then runs the flawed
+retrospective design on top -- recall bias (cases over-report prone among the
+truly-supine) + control-selection bias (controls oversampled toward advantaged/
+supine families) -- and compares to the TRUE do-effect.
+
+| | PRE era | POST era |
+|---|---:|---:|
+| **true do-effect OR (planted)** | 3.03 | 3.02 |
+| clean crude design (no bias) | 2.93 | 5.04 |
+| + recall bias only | 3.91 | 5.94 |
+| + control-selection bias only | 3.53 | 7.40 |
+| + both biases (what a study sees) | 4.30 | 8.73 |
+
+Two honest takeaways, both vindicating Pete's skepticism *in degree, not in kind*:
+
+1. **The reported OR is materially inflated by design** -- 1.4x (pre) to 2.9x (post)
+   above the true do-effect once recall + selection bias are layered on. The famous
+   numbers are partly artifact.
+2. **But the effect does not vanish when bias is removed.** The clean do-effect
+   stays ~3. Note the POST clean-*crude* OR (5.04) already overshoots the do-effect
+   (3.02) *before any bias* -- that gap is the healthy-adherer **confounding** (post
+   prone concentrates in adversity), exactly the Phase-4 PCA story, and it's what the
+   *adjusted* OR is meant to remove. So the historical OR = a real causal core (~3)
+   + confounding + design bias stacked on top.
+
 ## 4. Is prone the "principal component"? Causally yes, by variance no (Phase 4)
 
 The word means two different things, and the answer differs:
