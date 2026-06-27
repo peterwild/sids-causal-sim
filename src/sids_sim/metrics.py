@@ -74,6 +74,24 @@ def adjusted_prone_or(df: pd.DataFrame, controls_per_case: int = 5,
     return float(np.exp(beta[1]))
 
 
+def smoking_adjusted_ors(df: pd.DataFrame, controls_per_case: int = 5,
+                         seed: int = 0) -> dict:
+    """Adjusted ORs for smoking from the same case-control logistic used for prone.
+
+    Returns the light-smoker OR (any smoking vs none) and the heavy-smoker OR
+    (>20/day, which carries the extra heavy term on top of the base). Lets the
+    discrimination report check the dose-response target (~2 -> ~12.7).
+    """
+    rng = np.random.default_rng(seed)
+    sample = _case_control_sample(df, controls_per_case, rng)
+    cols = ["prone", "smoke", "heavy_smoke", "soft_bedding", "ses"]
+    X = np.column_stack([np.ones(len(sample))] + [sample[c].to_numpy(float) for c in cols])
+    y = sample["death"].to_numpy(float)
+    beta = logistic_irls(X, y)
+    # column order: [intercept, prone, smoke, heavy_smoke, soft_bedding, ses]
+    return {"base": float(np.exp(beta[2])), "heavy": float(np.exp(beta[2] + beta[3]))}
+
+
 def crude_prone_or(df: pd.DataFrame) -> float:
     cases, controls = df[df.death == 1], df[df.death == 0]
     a = (cases.prone == 1).sum() + 0.5

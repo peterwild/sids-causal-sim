@@ -142,6 +142,27 @@ form -- which is exactly why the result is reported as a form-band plus E-value,
 a point estimate. The mechanism shares within each form are still illustrative
 (anchored to the spike + the no-derangement datum, not yet individually fit).
 
+## 6. Discrimination report -- the formal verdict (Phase 5)
+
+`scripts/phase5_discrimination.py` calibrates all three worlds and scores them
+against `data/calibration/targets.json`, separating **discriminating** targets from
+**shared** ones (reproduced by no world -- the documented era-model gap, so they
+cannot discriminate). The operative discriminator is the prone adjusted OR at both
+eras plus its rise across the campaign.
+
+| world | calib loss | discriminator (prone-OR + rise) | verdict |
+|-------|-----------:|:-------------------------------:|:-------:|
+| H1 causal | 1.11 | PASS (3.34 -> 3.81) | **SURVIVES** |
+| H3 triple | 1.20 | PASS (3.28 -> 3.48) | **SURVIVES** |
+| H2 marker | 6.06 | **FAIL (1.16 -> 1.40)** | **REJECTED** |
+
+The marker world is rejected because it cannot lift the OR off ~1 or make it rise.
+H1 and H3 both reproduce the discriminator (minor out-of-sample level misfits
+remain, e.g. the noisy pre-era death rate and the smoking dose-response OR; these
+do not bear on the causal verdict). Shared, non-discriminating gaps (post-era death
+decline, smoking's rising attributable share) are the same era-model limitation
+noted below -- they reject no world differentially.
+
 ## Honest limitations
 
 - Everything rests on the calibrated data-generating process. The result is

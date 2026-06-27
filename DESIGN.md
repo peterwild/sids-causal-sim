@@ -174,8 +174,8 @@ air). The simulation should reproduce this stylized fact as an additional gate.
 - [ ] Phase 2 — Calibration harness against §5 targets
 - [ ] Phase 3 — Biased case-control replication + modern estimators + E-value
 - [ ] Phase 4 — Variance decomposition (Shapley + PCA), per era
-- [ ] **Phase 4.5 — Mediation decomposition (§11) + linchpin challenge-toggle experiment (§17–§18): conditional absolute-risk surface, removable vs irreducible**
-- [ ] Phase 5 — Discrimination report + write-up
+- [x] **Phase 4.5 — Mediation decomposition (§11) + linchpin challenge-toggle experiment (§17–§18): conditional absolute-risk surface, removable vs irreducible**
+- [x] Phase 5 — Discrimination report (`scripts/phase5_discrimination.py`); write-up in FINDINGS §6
 - [ ] Phase 6 (deferred) — Continuous mixing-weight fit
 - [ ] **Phase 7 (deferred) — Holistic competing-risks ledger + exhaustion/displacement sub-model (§12, §14)**
 - [ ] **Phase 8 (deferred) — Home risk-engineering + intervention protocols (§15–§16); three-protocol comparison; full write-up**
