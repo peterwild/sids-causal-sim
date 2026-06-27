@@ -329,6 +329,48 @@ prior draw sequence shifts.)
 - **Neither bears on the causal verdict**, which is era-internal (the OR
   discriminator and its rise), never a function of absolute death levels.
 
+## 10. Supervised prone — the home NICU-equivalent carve-out (synthesis)
+
+This section is reasoning *on top of* the model (it draws on the Phase 4.5/7/8
+mechanisms + the DESIGN §13 NICU argument), not a new simulation.
+
+The §13 finding was that the NICU makes prone safe not by accepting the risk but by
+**neutralizing the unwitnessed-asphyxia pathway** with monitoring + an immediate
+human rescuer, then transitioning to supine before discharge. The home version:
+**a prone nap on an engineered surface (Newton-class, bare crib, AC room) WHILE an
+awake, attentive adult supervises** recreates that — it converts the lethal
+*unwitnessed* event into a *witnessed, rescuable* one. Rebreathing and thermal are
+engineered down; obstruction is partly mitigated (a watching parent can reposition);
+the self-rescue arm is covered by the human. For that bounded scenario the residual
+is very small (only a sudden primary autonomic event survives a witnessed nap, and
+even that is best-case-rescuable).
+
+**The load-bearing element is the awake supervision, not the gadgets.** Home
+monitors (Owlet pulse-ox; Nanit camera/breathing-motion) only *detect* — they don't
+rescue, have blind spots, carry automation-complacency risk, and have **no mortality
+evidence** (AAP does not recommend monitors for SIDS prevention). They are a marginal
+net, not what makes it safe.
+
+**Bright line:** this carve-out covers *supervised* naps only. Night / unattended
+sleep — where ~all SIDS occurs and where you can't stay awake-attentive — stays
+supine. Notably this is roughly the line pediatric guidance already draws between
+supervised tummy-time and unobserved sleep.
+
+**Regime corollary (day supervised-prone + night soother).** The soother's *modeled*
+benefit (Phase 7/8) — better sleep → less parental exhaustion → less bed-sharing
+displacement — is concentrated at **night** (the long unsupervised block where
+exhaustion bites). So a "supervised-prone day naps + soother at night" split is safe
+(prone confined to the supervised window) and puts the soother where its benefit
+actually is. **On weaning (outside the model, thin evidence):** the main theoretical
+soother downside is a motion/white-noise sleep-onset association; it is *time-limited*
+(SNOO-class devices are used ~0–6mo and have a built-in weaning mode — a one-time
+transition, not years of dependence). The day/night split only modestly reduces the
+soother "dose" because **night dominates the conditioning**, so it is not a strong
+weaning fix. Net: "soother always" is simpler and its weaning step is small and
+manageable; the hybrid is a *reasonable* choice if prone day-naps are independently
+wanted (reflux comfort, the baby sleeps better, the parent is there anyway), but it
+is not *necessary* to avoid a weaning problem.
+
 ## Bottom line (all phases)
 
 1. Prone IS an independent cause (Phases 1-5): the marker-only world is falsified;
