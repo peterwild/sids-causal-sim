@@ -55,7 +55,11 @@ class ExhaustionParams:
 
 @dataclass(frozen=True)
 class DisplacementParams:
-    alpha0: float = -3.2       # baseline log-odds of unsafe surface-sharing (rare for advantaged)
+    alpha0: float = -4.0       # baseline log-odds of unsafe surface-sharing (rare for advantaged).
+    # Anchored so the back-sleep campaign is net-beneficial at the POPULATION level
+    # (bare-crib supine << historical prone), while still letting the most exhausted
+    # families flip net-harmful (Phase 7). A higher alpha0 makes displacement dominate
+    # the population average and wrongly implies the campaign cost lives.
     alpha_E: float = 1.1       # exhaustion -> displacement (the engine)
     alpha_abstinence: float = 0.4  # abstinence framing raises total sharing a bit too
     # excess-risk multipliers vs a safe supine crib (section 14.3 table)
@@ -178,7 +182,9 @@ def solve_exhaustion_threshold(p: Params, prof: Profile, *,
     nets = []
     crossing = None
     for s in ses_grid:
-        fam = Family(ses=float(s))
+        # scan a SOLO parent (no_support=1) so the SES axis spans the flip region;
+        # a fully-supported family rarely reaches the exhaustion needed to flip.
+        fam = Family(ses=float(s), no_support=1)
         out = evaluate_family(p, prof, fam, ep=ep, dp=dp, abstinence=abstinence, form=form)
         nets.append(out.net_advice_minus_prone)
         if crossing is None and out.net_advice_minus_prone > 0:

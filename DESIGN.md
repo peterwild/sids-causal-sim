@@ -178,7 +178,7 @@ air). The simulation should reproduce this stylized fact as an additional gate.
 - [x] Phase 5 — Discrimination report (`scripts/phase5_discrimination.py`); write-up in FINDINGS §6
 - [ ] Phase 6 (deferred) — Continuous mixing-weight fit
 - [x] **Phase 7 — Exhaustion/displacement sub-model (§12, §14): `scripts/phase7_displacement.py`; write-up in FINDINGS §7**
-- [ ] **Phase 8 (deferred) — Home risk-engineering + intervention protocols (§15–§16); three-protocol comparison; full write-up**
+- [x] **Phase 8 — Home-protocol comparison (§15–§16): `scripts/phase8_protocols.py`; capstone write-up in FINDINGS §8 + bottom line**
 
 ---
 

@@ -1,4 +1,4 @@
-# Findings (through Phase 3)
+# Findings (through Phase 8)
 
 **Question:** Is sleeping prone (stomach) a SIDS risk *by itself* -- holding the
 other dangers (smoking, low SES, soft bedding) constant -- or does it only look
@@ -175,9 +175,9 @@ section-14 location ORs), so the result is the SHAPE, not the magnitudes.
 
 | family (low-risk infant), abstinence framing | P(displace) | supine advice | prone (hist) | +soother | net /1000 |
 |---|---:|---:|---:|---:|---:|
-| advantaged, supported | 0.06 | 0.229 | 0.346 | 0.155 | **-0.117** (protective) |
-| average | 0.10 | 0.321 | 0.387 | 0.196 | **-0.067** (protective) |
-| deprived, solo, twins | 0.35 | 0.870 | 0.684 | 0.497 | **+0.186 (HARMFUL)** |
+| advantaged, supported | 0.03 | 0.160 | 0.316 | 0.125 | **-0.156** (protective) |
+| average | 0.05 | 0.205 | 0.335 | 0.144 | **-0.131** (protective) |
+| deprived, solo, twins | 0.19 | 0.527 | 0.488 | 0.297 | **+0.039 (HARMFUL)** |
 
 Three findings:
 
@@ -185,10 +185,10 @@ Three findings:
    recommendation is clearly net-protective. For exhausted, unsupported families it
    can flip net-harmful -- the displacement loop outweighs the in-crib protection.
 2. **Framing is a lever.** Under abstinence framing ("never bed-share") the flip
-   occurs at ses ~ -1.37 (and below); under **harm-reduction framing it never flips**
-   across the scanned range. Telling exhausted parents how to bed-share least
-   dangerously beats telling them not to, because abstinence pushes displacement
-   into the sofa/armchair tail (the >50x-risk location).
+   occurs at ses ~ -1.74 for a solo parent (and below); under **harm-reduction
+   framing it never flips** across the scanned range. Telling exhausted parents how
+   to bed-share least dangerously beats telling them not to, because abstinence
+   pushes displacement into the sofa/armchair tail (the >50x-risk location).
 3. **An enforced-supine soother removes the trap.** The `+soother` column (SNOO-like)
    is the safest arm for every family, because cutting fragmentation cuts the
    exhaustion that drives displacement. This is the section-16 punchline arriving by
@@ -198,6 +198,72 @@ Three findings:
 This is also the predicted calibration signal of DESIGN section 14: a model WITHOUT
 the displacement arm understates real post-campaign SUID precisely in the
 high-exhaustion / low-SES strata -- the families where the arm fires hardest.
+
+## 8. Which home protocol minimizes NET infant mortality? (Phase 8, capstone)
+
+`scripts/phase8_protocols.py` integrates Phase 4.5 (position/environment -> in-crib
+risk) and Phase 7 (exhaustion -> displacement) into ONE model and ranks realistic
+home protocols by net population mortality, split into in-crib vs displacement
+components. Calibrated so the campaign is net-beneficial at the population level
+(bare supine << historical prone); displacement magnitudes inherit the illustrative
+Phase-7 params, so trust the RANKING, not the absolute levels.
+
+**Abstinence framing ("never bed-share"):**
+
+| rank | protocol | net/1000 | in-crib | displace |
+|---|---|---:|---:|---:|
+| 1 | **supine + soother (SNOO)** | **0.938** | 0.498 | 0.440 |
+| 2 | engineered prone permitted | 1.198 | 0.714 | 0.483 |
+| 3 | supine, bare firm crib | 1.478 | 0.474 | 1.005 |
+| 4 | supine + breathable mattress | 1.478 | 0.474 | 1.005 |
+| 5 | historical prone (reference) | 1.982 | 1.499 | 0.483 |
+
+**Harm-reduction framing:**
+
+| rank | protocol | net/1000 | in-crib | displace |
+|---|---|---:|---:|---:|
+| 1 | **supine + soother (SNOO)** | **0.610** | 0.504 | 0.106 |
+| 2 | supine, bare firm crib | 0.734 | 0.487 | 0.247 |
+| 3 | supine + breathable mattress | 0.734 | 0.487 | 0.247 |
+| 4 | engineered prone permitted | 0.841 | 0.724 | 0.117 |
+| 5 | historical prone (reference) | 1.635 | 1.519 | 0.117 |
+
+Five findings:
+
+1. **The enforced-supine soother wins under BOTH framings** -- and wins via the
+   *displacement* column, not the in-crib column (its in-crib risk equals bare
+   supine; it just cuts the exhaustion that drives bed/sofa sharing). This is the
+   section-16 punchline confirmed on the full DGP.
+2. **A breathable mattress is ~useless for a SUPINE baby** (identical to the bare
+   crib): rebreathing is a *prone* channel, so a breathable surface has almost
+   nothing to act on once the baby is on its back. It matters only if you are
+   contemplating prone.
+3. **The case for permitting engineered prone exists ONLY under abstinence framing.**
+   Under abstinence it ranks #2 (its deeper sleep cuts displacement enough to beat
+   bare supine); switch to harm-reduction framing and bare supine reclaims the edge
+   (#2 vs #4). So the right lever is not "permit prone" -- it is "fix the framing and
+   add a soother," which dominates prone either way.
+4. **Harm-reduction framing lowers every protocol's net risk** vs abstinence, by
+   moving displacement off the >50x sofa tail.
+5. **Historical (uncontrolled) prone is worst under both framings**, reproducing why
+   Back-to-Sleep saved lives -- the empirical anchor the model is tuned to respect.
+
+## Bottom line (all phases)
+
+1. Prone IS an independent cause (Phases 1-5): the marker-only world is falsified;
+   H1/H3 survive.
+2. But most of prone's risk for a low-risk infant is *engineerable* (Phase 4.5):
+   ~78% removable, leaving ~0.04-0.09/1000 (obstruction + endogenous autonomic),
+   robustly below 0.5/1000. Engineered prone is close to -- not equal to -- that
+   infant's own supine risk, and well below the population supine average.
+3. The back-sleep recommendation's net effect is *heterogeneous* (Phase 7): clearly
+   protective for supported families, able to backfire for exhausted/unsupported ones
+   via bed-sharing displacement, especially under abstinence framing.
+4. The dominant home protocol (Phase 8) is **back-sleep + an enforced-supine soother**,
+   under **harm-reduction framing** -- it captures supine's in-crib safety AND defuses
+   the displacement loop, beating every alternative including engineered prone. The
+   data-supported version of Pete's thesis is not "prone is fine if engineered"; it is
+   "supine + soother through the high-risk window, framed as harm-reduction."
 
 ## Honest limitations
 
