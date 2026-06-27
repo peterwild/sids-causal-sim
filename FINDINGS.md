@@ -351,11 +351,12 @@ prior draw sequence shifts.)
 - Everything rests on the calibrated data-generating process. The result is
   robust because it agrees with the assumption-light E-value, but it is not an
   experiment (none can exist).
-- **No world yet reproduces the full post-campaign death decline** (1.2 -> 0.4)
-  or the rise in smoking's attributable share (50% -> 80%). Our model of "what
-  changed across the era" is currently just prone + bedding; the real decline
-  also rode on smoking and breastfeeding campaigns. This does not affect the
-  odds-ratio / E-value logic, but it is an open calibration gap (Phase 4+).
+- **Era gap — now PARTLY closed (Phase 9).** Adding the real parallel era trends
+  (smoking decline + protective breastfeeding) closes most of the post-campaign
+  death decline (POST 0.91 -> 0.62 toward 0.4). The **smoking-PAF rise (50 -> 80%)
+  still does NOT reproduce** -- it needs post-era deaths to concentrate in smokers
+  harder than the additive hazard allows (a smoking x vulnerability interaction).
+  Neither affects the odds-ratio / E-value logic or the causal verdict.
 - The triple-risk world slightly under-reproduces the OR *rise* and over-
   concentrates deaths in the vulnerable; minor tuning outstanding.
 - The Phase-4 variance decomposition does NOT reproduce the real-world rise in

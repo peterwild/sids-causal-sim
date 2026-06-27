@@ -435,11 +435,25 @@ moves mass from sofa → prepared bed.
 **14.3 Feed into the death hazard `g` (§4).** Multiply the exogenous stressor load
 on share-nights by a location-specific factor calibrated to literature:
 
-| Location | Excess-risk multiplier (calibration target) |
-|----------|---------------------------------------------|
-| Prepared adult bed, no modifiers | ~1–2× (contested; near-null for breastfed, non-smoking, sober) |
-| Unplanned bed-share + modifiers (smoking/alcohol/soft bedding) | ~5–10× |
-| **Sofa / armchair** | **>50×** (among the highest ORs in the literature) |
+| Location | Excess-risk multiplier (calibration target) | Literature anchor |
+|----------|---------------------------------------------|-------------------|
+| Prepared adult bed, no modifiers | ~1–2× (contested; near-null for breastfed, non-smoking, sober) | Carpenter 2013 bed-share OR 2.7; Blair 2014 ~1.1 absent hazards |
+| Unplanned bed-share + modifiers (smoking/alcohol/soft bedding) | ~5–10× | rises steeply with smoking/alcohol in Carpenter/Blair |
+| **Sofa / armchair** | **~18–50×** (among the highest ORs in the literature) | Carpenter 2013 sofa OR **18.3** (CI 7–47); higher in some studies |
+
+**Parameter provenance (literature-anchored where possible):** the breastfeeding
+protective weight `w_bf` is set to ≈ the Hauck 2011 multivariable SOR (0.55;
+`w_bf=0.51` → OR 0.60); the location ORs above are anchored to Carpenter 2013
+(bed-share 2.7, sofa 18.3). The code's sofa factor sits at the **high end** of the
+published range — so the *baseline displacement rate* `alpha0` is then anchored to a
+harder constraint: that the back-sleep campaign is **net-beneficial at the
+population level** (Phase 8 — bare supine ≪ historical prone), which is the
+empirically certain fact. Net: the magnitudes are bounded by published ORs + the
+campaign anchor; the *rankings* are robust to the exact OR within range, the
+*absolute* net-risk levels are not. Still genuinely illustrative (no clean source):
+the **fragmentation→exhaustion** coefficients (`b_frag` etc.) and the
+**framing→location-mix** shift — these encode a real mechanism with no published
+effect size, and are the prime targets for a future fit.
 
 **14.4 The estimand this produces (advice-level mediation).**
 
@@ -808,5 +822,16 @@ That is the novel, defensible, *bounded* statement the whole project exists to m
   https://happiestbabyscience.com/all-products/
 - AAP 2022 safe-sleep recommendations (no home monitors to prevent SIDS; rolling/repositioning guidance).
   https://publications.aap.org/pediatrics/article/150/1/e2022057990/188304/
-- FDA warning letter to Happiest Baby, Inc. (2026-06-15) — content not yet reviewed; verify before publishing.
+- FDA warning letter to Happiest Baby, Inc. (2026-06-15) — SNOO X-Small sleep sack
+  (unauthorized), hospital bundle, quality (mould/refurb); core supine clearance intact.
   https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/happiest-baby-inc-718306-06152026
+
+**Displacement / breastfeeding parameter anchors (§9, §14):**
+- Carpenter et al. 2013, *BMJ Open* — bed-share OR ~2.7; sofa/armchair OR 18.3 (CI 7–47).
+  https://bmjopen.bmj.com/content/3/5/e002299
+- Blair et al. 2014, *PLOS One* — bed-sharing risk concentrates in hazardous circumstances.
+  https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0107799
+- Hauck et al. 2011, *Pediatrics* — breastfeeding & SIDS meta-analysis, multivariable SOR 0.55.
+  https://pubmed.ncbi.nlm.nih.gov/21669892/
+- Thompson et al. 2017, *Pediatrics* — breastfeeding duration & SIDS (dose-response, ≥2mo aOR 0.60).
+  https://publications.aap.org/pediatrics/article/140/5/e20171324/37852/
