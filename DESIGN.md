@@ -179,6 +179,8 @@ air). The simulation should reproduce this stylized fact as an additional gate.
 - [x] Phase 6 — Continuous mixing-weight fit (`scripts/phase6_mixing.py`); write-up in FINDINGS §7.5
 - [x] **Phase 7 — Exhaustion/displacement sub-model (§12, §14): `scripts/phase7_displacement.py`; write-up in FINDINGS §7**
 - [x] **Phase 8 — Home-protocol comparison (§15–§16): `scripts/phase8_protocols.py`; capstone write-up in FINDINGS §8 + bottom line**
+- [x] **Phase 3.5 — Biased case-control replication (§6 step 2): `scripts/phase35_bias.py`; FINDINGS §3.5**
+- [x] **Phase 9 — Era-model closure (smoking decline + breastfeeding; additive SCM knobs): `scripts/phase9_era.py`; FINDINGS §9 (death-rate gap closes; PAF-rise remains open)**
 
 ---
 

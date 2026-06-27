@@ -296,6 +296,39 @@ Five findings:
 5. **Historical (uncontrolled) prone is worst under both framings**, reproducing why
    Back-to-Sleep saved lives -- the empirical anchor the model is tuned to respect.
 
+## 9. Closing the era-model gap (Phase 9)
+
+The documented open gap: no world reproduced the full post-campaign death decline
+(1.2 -> 0.4) or smoking's rising attributable share (50% -> 80%), because the era
+switch only moved prone + bedding. `scripts/phase9_era.py` adds the two real
+parallel era trends via the additive, default-off SCM knobs -- **maternal smoking
+declined, breastfeeding rose (protective)** -- re-levels the PRE hazard so the
+pre-era rate stays 1.2, and measures the closure. (These knobs default to inert, so
+every earlier phase is byte-identical; the breastfeeding draw is taken last so no
+prior draw sequence shifts.)
+
+| metric | target | base model | era-enriched |
+|---|---:|---:|---:|
+| PRE death /1000 | 1.20 | 1.19 | 1.20 |
+| POST death /1000 | 0.40 | 0.91 | **0.62** |
+| PRE smoking PAF | 0.50 | 0.64 | 0.65 |
+| POST smoking PAF | 0.80 | 0.66 | **0.55** |
+
+**Split verdict, reported honestly:**
+
+- **Death-rate gap: largely closes.** Adding breastfeeding + the smoking decline
+  pulls POST from 0.91 toward 0.4 -- roughly 57% of the remaining excess removed
+  (post-era drop goes from 0.28 to 0.58 against a 0.80 target). So that gap was a
+  **missing-mechanism artifact**, not a model flaw.
+- **Smoking-PAF rise: does NOT reproduce** -- it stays ~flat and even falls if
+  smoking declines (forcing smoking down mechanically lowers its attributable
+  fraction). The historical 50->80% rise needs the *remaining* post-era deaths to
+  concentrate in smokers far harder than this DGP allows -- e.g. a smoking x
+  vulnerability interaction, or prone-removal sparing mostly non-smoking infants.
+  This is a real, narrower **open gap** the current additive hazard can't express.
+- **Neither bears on the causal verdict**, which is era-internal (the OR
+  discriminator and its rise), never a function of absolute death levels.
+
 ## Bottom line (all phases)
 
 1. Prone IS an independent cause (Phases 1-5): the marker-only world is falsified;

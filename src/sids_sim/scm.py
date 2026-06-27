@@ -55,6 +55,19 @@ class Params:
     smoke_intercept: float = -0.40      # sigmoid(-0.4) ~= 0.40 at SES=0
     smoke_ses_slope: float = -1.00
     p_heavy_given_smoke: float = 0.25   # >20 cig/day among smokers
+    # Phase 9 (era-model closure): smoking declined across the campaign era. A
+    # log-odds shift applied to the smoking intercept in the POST era. Default 0
+    # keeps the base model byte-identical (era switch changes only prone+bedding).
+    smoke_post_shift: float = 0.0
+
+    # --- breastfeeding (Phase 9): protective, rose across the era ---
+    # Defaults make it inert: w_bf=0 means no hazard effect even though the column
+    # is generated. The bf draw is taken AFTER prone so existing draw sequences
+    # (and thus all earlier-phase cohorts) are unchanged.
+    bf_intercept: float = 0.0           # sigmoid(0)=0.5 prevalence at SES=0
+    bf_ses_slope: float = 0.0           # advantaged breastfeed more when >0
+    bf_post_shift: float = 0.0          # POST-era rise in breastfeeding
+    w_bf: float = 0.0                   # protective hazard weight (subtracted)
 
     # --- soft bedding | SES, era  (lower SES & pre-era -> more soft bedding) ---
     bedding_intercept: float = -0.20
@@ -101,7 +114,8 @@ class SimConfig:
     params: Params = field(default_factory=Params)
 
 
-def _death_logodds(world: World, p: Params, *, vuln, smoke, heavy, bedding, prone, ses):
+def _death_logodds(world: World, p: Params, *, vuln, smoke, heavy, bedding, prone,
+                   ses, bf=0.0):
     """Return per-infant log-odds of death under the chosen world.
 
     The stressor predictor is identical across worlds; what changes is how prone
@@ -110,12 +124,14 @@ def _death_logodds(world: World, p: Params, *, vuln, smoke, heavy, bedding, pron
     # shared stressor terms (everything EXCEPT prone's direct effect).
     # w_ses is the direct low-SES->hazard path: lower (more negative) ses raises
     # the hazard. This is the marker world's strongest fair engine -- poverty
-    # killing through many routes, with prone as its correlate.
+    # killing through many routes, with prone as its correlate. w_bf is the
+    # protective breastfeeding term (Phase 9; default 0 -> inert).
     base_stressors = (
         p.w_smoke * smoke
         + p.w_heavy_extra * heavy
         + p.w_bedding * bedding
         - p.w_ses * ses
+        - p.w_bf * bf
     )
 
     if world is World.CAUSAL:
@@ -155,15 +171,17 @@ def _death_logodds(world: World, p: Params, *, vuln, smoke, heavy, bedding, pron
 
 
 def pdeath(world: World, params: Params, *, vulnerable, smoke, heavy_smoke,
-           soft_bedding, prone, ses):
+           soft_bedding, prone, ses, breastfeeding=None):
     """Public hazard: probability of death given covariate arrays.
 
     Used for counterfactual / attributable-fraction calculations (e.g. set
-    smoke=0 to ask 'how many deaths would remain with no smoking?').
+    smoke=0 to ask 'how many deaths would remain with no smoking?'). breastfeeding
+    is optional (Phase 9); defaults to none so all earlier-phase calls are unchanged.
     """
+    bf = 0.0 if breastfeeding is None else breastfeeding
     eta = _death_logodds(
         world, params, vuln=vulnerable, smoke=smoke, heavy=heavy_smoke,
-        bedding=soft_bedding, prone=prone, ses=ses,
+        bedding=soft_bedding, prone=prone, ses=ses, bf=bf,
     )
     return _sigmoid(eta)
 
@@ -185,8 +203,11 @@ def simulate_covariates(cfg: SimConfig) -> pd.DataFrame:
     # latent vulnerability (independent of SES in Phase 1)
     vuln = (rng.random(n) < p.p_vulnerable).astype(int)
 
-    # smoking | SES
-    p_smoke = _sigmoid(p.smoke_intercept + p.smoke_ses_slope * ses)
+    # smoking | SES, era  (smoke_post_shift declines smoking in POST; default 0)
+    p_smoke = _sigmoid(
+        p.smoke_intercept + p.smoke_ses_slope * ses
+        + (p.smoke_post_shift if post else 0.0)
+    )
     smoke = (rng.random(n) < p_smoke).astype(int)
     heavy = ((smoke == 1) & (rng.random(n) < p.p_heavy_given_smoke)).astype(int)
 
@@ -207,6 +228,13 @@ def simulate_covariates(cfg: SimConfig) -> pd.DataFrame:
     eta_prone = eta_prone + p.gamma_vuln_prone * vuln
     prone = (rng.random(n) < _sigmoid(eta_prone)).astype(int)
 
+    # breastfeeding | SES, era -- drawn LAST so adding it does not perturb any
+    # prior draw (prone/death sequences stay identical to earlier phases).
+    p_bf = _sigmoid(
+        p.bf_intercept + p.bf_ses_slope * ses + (p.bf_post_shift if post else 0.0)
+    )
+    breastfeeding = (rng.random(n) < p_bf).astype(int)
+
     return pd.DataFrame(
         {
             "ses": ses,
@@ -215,6 +243,7 @@ def simulate_covariates(cfg: SimConfig) -> pd.DataFrame:
             "heavy_smoke": heavy,
             "soft_bedding": bedding,
             "prone": prone,
+            "breastfeeding": breastfeeding,
             "era": cfg.era.value,
             "world": cfg.world.value,
         }
@@ -224,11 +253,12 @@ def simulate_covariates(cfg: SimConfig) -> pd.DataFrame:
 def attach_hazard(df: pd.DataFrame, world: World, params: Params,
                   rng: np.random.Generator) -> pd.DataFrame:
     """Add p_death and a Bernoulli death draw to a covariate frame (in place)."""
+    bf = df["breastfeeding"].to_numpy() if "breastfeeding" in df else None
     p_death = pdeath(
         world, params,
         vulnerable=df.vulnerable.to_numpy(), smoke=df.smoke.to_numpy(),
         heavy_smoke=df.heavy_smoke.to_numpy(), soft_bedding=df.soft_bedding.to_numpy(),
-        prone=df.prone.to_numpy(), ses=df.ses.to_numpy(),
+        prone=df.prone.to_numpy(), ses=df.ses.to_numpy(), breastfeeding=bf,
     )
     df = df.copy()
     df["p_death"] = p_death
