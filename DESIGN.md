@@ -176,7 +176,7 @@ air). The simulation should reproduce this stylized fact as an additional gate.
 - [ ] Phase 4 — Variance decomposition (Shapley + PCA), per era
 - [x] **Phase 4.5 — Mediation decomposition (§11) + linchpin challenge-toggle experiment (§17–§18): conditional absolute-risk surface, removable vs irreducible**
 - [x] Phase 5 — Discrimination report (`scripts/phase5_discrimination.py`); write-up in FINDINGS §6
-- [ ] Phase 6 (deferred) — Continuous mixing-weight fit
+- [x] Phase 6 — Continuous mixing-weight fit (`scripts/phase6_mixing.py`); write-up in FINDINGS §7.5
 - [x] **Phase 7 — Exhaustion/displacement sub-model (§12, §14): `scripts/phase7_displacement.py`; write-up in FINDINGS §7**
 - [x] **Phase 8 — Home-protocol comparison (§15–§16): `scripts/phase8_protocols.py`; capstone write-up in FINDINGS §8 + bottom line**
 

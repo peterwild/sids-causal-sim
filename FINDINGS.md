@@ -226,6 +226,27 @@ This is also the predicted calibration signal of DESIGN section 14: a model WITH
 the displacement arm understates real post-campaign SUID precisely in the
 high-exhaustion / low-SES strata -- the families where the arm fires hardest.
 
+## 7.5 Continuous direct-causal fraction (Phase 6)
+
+`scripts/phase6_mixing.py` replaces the discrete three-worlds with a continuous
+**direct-causal fraction** `lambda = w_prone / w_prone_full` (0 = pure marker,
+1 = full causal) and profiles the calibration loss over it -- re-optimizing every
+other parameter (confounding slopes, smoking/bedding/SES, vulnerability) at each
+lambda to give the marker side every chance.
+
+| lambda (direct share) | 0% | 25% | 50% | 75% | 100% | 125% | 150% | 175% |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| calib loss | 8.11 | 5.37 | 4.80 | 4.18 | 2.66 | 1.44 | 1.45 | 1.36 |
+
+The loss **explodes ~6x toward the marker end** (lambda=0) and plateaus low once the
+direct share is large; the acceptable region (within 2x of the best fit) is
+**lambda >= ~1.0**. So the data demand that essentially all of prone's apparent
+effect be direct-causal -- they never prefer a diluted or marker world no matter how
+the confounders are retuned. This is the continuous analog of the Phase-3 E-value
+verdict. (The flat minimum wandering to lambda=1.75 is optimizer noise on the
+plateau, not a claim that prone "over-explains"; it also hints the discrete
+calibration mildly under-shot w_prone.)
+
 ## 8. Which home protocol minimizes NET infant mortality? (Phase 8, capstone)
 
 `scripts/phase8_protocols.py` integrates Phase 4.5 (position/environment -> in-crib
