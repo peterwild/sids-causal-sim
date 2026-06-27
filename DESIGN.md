@@ -177,7 +177,7 @@ air). The simulation should reproduce this stylized fact as an additional gate.
 - [x] **Phase 4.5 — Mediation decomposition (§11) + linchpin challenge-toggle experiment (§17–§18): conditional absolute-risk surface, removable vs irreducible**
 - [x] Phase 5 — Discrimination report (`scripts/phase5_discrimination.py`); write-up in FINDINGS §6
 - [ ] Phase 6 (deferred) — Continuous mixing-weight fit
-- [ ] **Phase 7 (deferred) — Holistic competing-risks ledger + exhaustion/displacement sub-model (§12, §14)**
+- [x] **Phase 7 — Exhaustion/displacement sub-model (§12, §14): `scripts/phase7_displacement.py`; write-up in FINDINGS §7**
 - [ ] **Phase 8 (deferred) — Home risk-engineering + intervention protocols (§15–§16); three-protocol comparison; full write-up**
 
 ---

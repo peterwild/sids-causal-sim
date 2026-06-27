@@ -163,6 +163,42 @@ do not bear on the causal verdict). Shared, non-discriminating gaps (post-era de
 decline, smoking's rising attributable share) are the same era-model limitation
 noted below -- they reject no world differentially.
 
+## 7. When does the back-sleep recommendation backfire? (Phase 7)
+
+`scripts/phase7_displacement.py` adds the parental-exhaustion -> bed-sharing
+displacement loop (DESIGN sections 12,14): supine sleep is lighter -> more
+exhaustion -> more unplanned bed/sofa sharing, whose risk dwarfs prone-in-a-crib.
+We compare the recommendation (back-sleep) against the counterfactual it replaced
+(uncontrolled prone), net of displacement. **Net > 0 = the recommendation increases
+expected death for that family.** Parameters are illustrative (anchored to the
+section-14 location ORs), so the result is the SHAPE, not the magnitudes.
+
+| family (low-risk infant), abstinence framing | P(displace) | supine advice | prone (hist) | +soother | net /1000 |
+|---|---:|---:|---:|---:|---:|
+| advantaged, supported | 0.06 | 0.229 | 0.346 | 0.155 | **-0.117** (protective) |
+| average | 0.10 | 0.321 | 0.387 | 0.196 | **-0.067** (protective) |
+| deprived, solo, twins | 0.35 | 0.870 | 0.684 | 0.497 | **+0.186 (HARMFUL)** |
+
+Three findings:
+
+1. **The sign is heterogeneous.** For advantaged/supported families the
+   recommendation is clearly net-protective. For exhausted, unsupported families it
+   can flip net-harmful -- the displacement loop outweighs the in-crib protection.
+2. **Framing is a lever.** Under abstinence framing ("never bed-share") the flip
+   occurs at ses ~ -1.37 (and below); under **harm-reduction framing it never flips**
+   across the scanned range. Telling exhausted parents how to bed-share least
+   dangerously beats telling them not to, because abstinence pushes displacement
+   into the sofa/armchair tail (the >50x-risk location).
+3. **An enforced-supine soother removes the trap.** The `+soother` column (SNOO-like)
+   is the safest arm for every family, because cutting fragmentation cuts the
+   exhaustion that drives displacement. This is the section-16 punchline arriving by
+   a second, independent route: the device helps not only by enforcing supine but by
+   defusing the bed-sharing loop.
+
+This is also the predicted calibration signal of DESIGN section 14: a model WITHOUT
+the displacement arm understates real post-campaign SUID precisely in the
+high-exhaustion / low-SES strata -- the families where the arm fires hardest.
+
 ## Honest limitations
 
 - Everything rests on the calibrated data-generating process. The result is
