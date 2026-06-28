@@ -60,6 +60,5 @@ python scripts/phase45_linchpin.py        # conditional absolute-risk decomposit
 
 ## Provenance
 
-Built as a personal-curiosity research project, with substantial AI pair-programming
-(Claude). Calibration targets and parameter anchors are cited in `DESIGN.md`.
+Built as a personal-curiosity research project with Claude. Calibration targets and parameter anchors are cited in `DESIGN.md`.
 Corrections and critiques welcome — open an issue or PR.
